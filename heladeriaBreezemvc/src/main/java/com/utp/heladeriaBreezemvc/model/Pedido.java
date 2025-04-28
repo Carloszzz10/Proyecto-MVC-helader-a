@@ -78,7 +78,10 @@ public class Pedido {
     public void mostrarInfoPedido() {
     System.out.println("Información diferente desde feature/pedidos");
 }
-
+    
+    public void imprimirResumen() {
+    System.out.println("Pedido #" + numero + " Total: " + total);
+}
     public void setTotal(double total) {
         this.total = total;
     }
