@@ -14,9 +14,8 @@ public class Tamano {
     
     private Double factorPrecio; // 1.0,  0.75 ,   0.5,  0.25
 
-    public Tamano(Integer id, String nombre) {
-        this.id =id;
-        this.nombre =nombre;
+    public Tamano() {
+        
     }
 
     public Tamano(Integer id, String nombre, Double factorPrecio) {
