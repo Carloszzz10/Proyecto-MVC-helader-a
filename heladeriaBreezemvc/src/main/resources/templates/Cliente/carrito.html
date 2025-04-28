@@ -34,21 +34,21 @@
             </h1>
 
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>  <!-- Ruta estatica por el momento -->
+                <li class="breadcrumb-item"><a th:href="@{/heladeriamvc}">Home</a></li>
                 <li class="breadcrumb-item active">Carrito</li>
             </ol>
 
-            <!-- Verificar si el carrito está vacío -->
-            <div>  <!-- Estatico -->
+             <!-- Verificar si el carrito está vacío -->
+            <div th:if="${#lists.isEmpty(cart)}">
                 <div class="alert alert-info text-center">
                     <h3>Ups, tu carrito está vacío por el momento</h3>
                     <p>¡Explora nuestros productos para encontrar algo delicioso!</p>
-                    <a href="#" class="btn btn-primary">Ver productos</a> <!-- Igualmente estatico -->
+                    <a th:href="@{/index}"  class="btn btn-primary">Ver productos</a>
                 </div>
             </div>
 
-            <!-- Mostrar los productos del carrito -->
-            <div>
+               <!-- Mostrar los productos del carrito -->
+            <div th:unless="${#lists.isEmpty(cart)}">
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="row">
@@ -67,19 +67,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr th:each="dpedido : ${cart}">
                                             <td>
                                                 <!-- Mostrar la imagen del producto -->
-                                                <img src="ruta_de_imagen" alt="Producto" class="product-img">
+                                              <img th:src="${dpedido.producto.imageUrl}" alt="Producto" class="product-img">
                                             </td>
-                                            <td>Nombre</td>
-                                            <td>Precio</td>
-                                            <td>Local</td>
-                                            <td>Tamaño</td>
-                                            <td>Cantidad</td>
-                                            <td>Total</td>
+                                            <td th:text="${dpedido.nombre}">Nombre</td>
+                                            <td th:text="${dpedido.precio}">Precio</td>
+                                            <td th:text="${dpedido.local.nombre}">Local</td>
+                                            <td th:text="${dpedido.tamano.nombre}">Tamaño</td>
+                                            <td th:text="${dpedido.cantidad}">Cantidad</td>
+                                            <td th:text="${dpedido.total}">Total</td>
                                             <td>
-                                                <a href="#" class="btn btn-danger">
+                                                <a th:href="@{/delete/cart/{id} (id=${dpedido.producto.id})}" class="btn btn-danger">
                                                     Quitar
                                                 </a>
                                             </td>
@@ -92,9 +92,9 @@
                                 <h2 class="card-title">SUBTOTAL</h2>
                                 <ul class="list-group">
                                     <li class="list-group-item">
-                                        <h5>100.00</h5> <!-- Cambiar el valor aquí según sea necesario -->
+                                        <h5 th:text="${pedido.total}"></h5>
                                     </li>
-                                    <a href="#" class="btn btn-dark">Ver Orden</a>
+                                    <a th:href="@{/order}" class="btn btn-dark">Ver Orden</a>
                                 </ul>
                             </div>
                         </div>
