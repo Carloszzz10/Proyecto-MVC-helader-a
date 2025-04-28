@@ -82,6 +82,11 @@ public class Pedido {
     public void imprimirResumen() {
     System.out.println("Pedido #" + numero + " Total: " + total);
 }
+
+  public void imprimirDetalles() {
+    System.out.println("Detalles del Pedido: Número " + numero + ", Total: " + total);
+}
+
     public void setTotal(double total) {
         this.total = total;
     }
