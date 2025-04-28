@@ -10,11 +10,13 @@ public class Tamano {
     private Integer id;
     
     @Column(unique = true)
-    private String nombre; // "1L", "3/4L", "1/2L", "1/4L"
+    private String nombre; //      "1L", "3/4L", "1/2L", "1/4L"
     
-    private Double factorPrecio; // 1.0, 0.75, 0.5, 0.25
+    private Double factorPrecio; // 1.0,  0.75 ,   0.5,  0.25
 
-    public Tamano() {
+    public Tamano(Integer id, String nombre) {
+        this.id =id;
+        this.nombre =nombre;
     }
 
     public Tamano(Integer id, String nombre, Double factorPrecio) {
